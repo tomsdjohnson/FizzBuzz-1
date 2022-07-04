@@ -9,8 +9,8 @@ def print_hi(name):
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-def multiple_of(multiple, num):
-    return multiple % num == 0
+def multiple_of(multiple, num, rules):
+    return (multiple % num == 0) and rules.__contains__(str(num))
 
 
 def insert_fezz(strings):
@@ -22,20 +22,21 @@ def insert_fezz(strings):
     return strings
 
 
-def fizzbuzz(limit):
+def fizzbuzz(limit, rules):
+    print(rules)
     for i in range(1, limit + 1):
         strings = []
-        if multiple_of(i, 3):
+        if multiple_of(i, 3, rules):
             strings.append("Fizz")
-        if multiple_of(i, 5):
+        if multiple_of(i, 5, rules):
             strings.append("Buzz")
-        if multiple_of(i, 7):
+        if multiple_of(i, 7, rules):
             strings.append("Bang")
-        if multiple_of(i, 11):
+        if multiple_of(i, 11, rules):
             strings.append("Bong")
-        if multiple_of(i, 13):
+        if multiple_of(i, 13, rules):
             strings = insert_fezz(strings)
-        if multiple_of(i, 17):
+        if multiple_of(i, 17, rules):
             strings = list(reversed(strings))
         if len(strings) == 0:
             print(i)
@@ -46,10 +47,13 @@ def fizzbuzz(limit):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print("Welcome to FizzBuzz!\n")
-    limit = input("Please enter which number you would like to stop at: ")
-    if limit.isdigit():
-        fizzbuzz(int(limit))
-    else:
+    limit_input = input("Please enter which number you would like to stop at: ")#
+    if not limit_input.isdigit():
         print("Please enter an integer!")
+    else:
+        rules_input = input("Please enter the numbers of the rules you want to input (comma seperated): ")
+        fizzbuzz(int(limit_input), rules_input.split(','))
+
+
 
 
