@@ -3,7 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-
+### if this function here is not used it can be deleted
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
@@ -38,6 +38,8 @@ def fizzbuzz(limit, rules):
             strings = insert_fezz(strings)
         if multiple_of(i, 17, rules):
             strings = list(reversed(strings))
+            
+        ### Added a space here for readability    
         if len(strings) == 0:
             print(i)
         else:
@@ -54,6 +56,4 @@ if __name__ == '__main__':
         rules_input = input("Please enter the numbers of the rules you want to input (comma seperated): ")
         fizzbuzz(int(limit_input), rules_input.split(','))
 
-
-
-
+        
